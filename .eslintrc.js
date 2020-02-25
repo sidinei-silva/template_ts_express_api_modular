@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    "plugin:@typescript-eslint/recommended",
   ],
   globals: {
     Atomics: 'readonly',
@@ -14,10 +15,58 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
+    project: "./tsconfig.json"
   },
   plugins: [
     '@typescript-eslint',
   ],
   rules: {
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "no-await-in-loop": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.spec.ts",
+          "src/utils/tests/*.ts"
+        ]
+      }
+    ]
   },
+  overrides: [
+    {
+      files: [
+        "*.js"
+      ],
+      rules: {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
+  settings: {
+    "import/extensions": [
+      ".ts",
+      ".js"
+    ],
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".js"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  }
 };
