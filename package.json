@@ -5,7 +5,8 @@
   "author": "Sidinei Silva <sidinei.silva02@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:development": "nodemon src/server.ts"
+    "start:development": "nodemon src/server.ts",
+    "start:debug": "nodemon --inspect src/server.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
