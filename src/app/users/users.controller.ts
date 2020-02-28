@@ -1,23 +1,25 @@
 import { Request, Response, Router } from 'express';
+import validateSchema from '../../middlewares/validation.middleware';
 import UserValidator from './users.validators';
 import UserService from './users.service';
 
 class UserController {
   private path: string;
 
-  private userValidator: UserValidator;
-
   private userService: UserService;
 
   constructor() {
     this.path = '/users';
-    this.userValidator = new UserValidator();
     this.userService = new UserService();
   }
 
   public initRoutes = (router: Router): void => {
     router.get(this.path, this.index);
-    router.post(this.path, this.userValidator.storeValidation, this.store);
+    router.post(
+      this.path,
+      validateSchema(UserValidator.storeValidation),
+      this.store,
+    );
   };
 
   private index = async (req: Request, res: Response): Promise<Response> => {
