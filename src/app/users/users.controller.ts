@@ -1,14 +1,18 @@
 import { Request, Response, Router } from 'express';
 import UserValidator from './users.validators';
+import UserService from './users.service';
 
 class UserController {
   private path: string;
 
   private userValidator: UserValidator;
 
+  private userService: UserService;
+
   constructor() {
     this.path = '/users';
     this.userValidator = new UserValidator();
+    this.userService = new UserService();
   }
 
   public initRoutes = (router: Router): void => {
@@ -22,7 +26,7 @@ class UserController {
   };
 
   private store = async (req: Request, res: Response): Promise<Response> => {
-    const user = 'Sidinei';
+    const user = this.userService.signup(req.body);
     return res.json(user);
   };
 }
