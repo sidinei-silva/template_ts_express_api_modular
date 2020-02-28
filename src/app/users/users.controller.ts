@@ -20,16 +20,28 @@ class UserController {
       validateSchema(UserValidator.storeValidation),
       this.store,
     );
+    router.post(
+      `${this.path}/signin`,
+      validateSchema(UserValidator.login),
+      this.exampleLogin,
+    );
   };
 
   private index = async (req: Request, res: Response): Promise<Response> => {
     const user = 'Sidinei';
-    return res.json(user);
+    return res.json({ user });
   };
 
   private store = async (req: Request, res: Response): Promise<Response> => {
     const user = this.userService.signup(req.body);
     return res.json(user);
+  };
+
+  private exampleLogin = async (
+    req: Request,
+    res: Response,
+  ): Promise<Response> => {
+    return res.json(req.body);
   };
 }
 

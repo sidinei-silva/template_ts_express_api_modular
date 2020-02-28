@@ -10,6 +10,13 @@ class UserValidator extends UserValidation {
       password: this.password.required(),
     });
   }
+
+  get login() {
+    return Yup.object().shape({
+      email: this.email.required(),
+      password: this.password.required(),
+    });
+  }
 }
 
 export default new UserValidator();
