@@ -6,6 +6,8 @@ const controllers = [new UserController()];
 
 const routes = Router();
 
+controllers.map(c => c.initRoutes(routes));
+
 routes.get('/', (req, res) => {
   return res.json({ message: 'Hello Routes' });
 });
