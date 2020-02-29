@@ -7,22 +7,25 @@ class UserController {
   private path: string;
 
   private userService: UserService;
+  
+  private userValidator: UserValidator;
 
   constructor() {
     this.path = '/users';
     this.userService = new UserService();
+    this.userValidator = new UserValidator();
   }
 
   public initRoutes = (router: Router): void => {
     router.get(this.path, this.index);
     router.post(
       this.path,
-      validateSchema(UserValidator.storeValidation),
+      validateSchema(this.userValidator.storeValidation),
       this.store,
     );
     router.post(
       `${this.path}/signin`,
-      validateSchema(UserValidator.login),
+      validateSchema(this.userValidator.login),
       this.exampleLogin,
     );
   };
