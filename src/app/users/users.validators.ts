@@ -1,7 +1,14 @@
 import * as Yup from 'yup';
-import UserValidation from './interfaces/UserValidation';
 
-class UserValidator extends UserValidation {
+class UserValidator {
+  private firstName = Yup.string();
+
+  private lastName = Yup.string();
+
+  private email = Yup.string().email();
+
+  private password = Yup.string().min(6);
+  
   get storeValidation() {
     return Yup.object().shape({
       firstName: this.firstName.required(),
