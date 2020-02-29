@@ -29,6 +29,7 @@ module.exports = {
     "class-methods-use-this": "off",
     "no-await-in-loop": "off",
     "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -46,16 +47,14 @@ module.exports = {
       }
     ]
   },
-  overrides: [
-    {
-      files: [
-        "*.js"
-      ],
-      rules: {
-        "@typescript-eslint/no-var-requires": "off"
-      }
+  overrides: [{
+    files: [
+      "*.js"
+    ],
+    rules: {
+      "@typescript-eslint/no-var-requires": "off"
     }
-  ],
+  }],
   settings: {
     "import/extensions": [
       ".ts",
