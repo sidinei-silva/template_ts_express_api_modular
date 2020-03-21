@@ -3,7 +3,7 @@ import UserModule from './user.module';
 import app from '../../app';
 import request from 'supertest';
 
-describe("Sum 1 + 1", () => {
+describe("User Test Module", () => {
 
     beforeAll(async () => {
         const routes = Router();
