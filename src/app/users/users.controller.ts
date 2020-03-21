@@ -19,7 +19,7 @@ class UserController {
   public initRoutes = (router: Router): void => {
     router.get(this.path, this.index);
     router.post(
-      this.path,
+      `${this.path}/signup`,
       validateSchema(this.userValidator.storeValidation),
       this.store,
     );
@@ -31,8 +31,12 @@ class UserController {
   };
 
   private index = async (req: Request, res: Response): Promise<Response> => {
-    const user = 'Sidinei';
-    return res.json({ user });
+    const users = [
+      { name: "Sidinei", email: "sidinei@example.com"},
+      { name: "Derik", email: "derik@example.com"},
+    ];
+  
+    return res.json(users);
   };
 
   private store = async (req: Request, res: Response): Promise<Response> => {

@@ -2,7 +2,7 @@ import { createConnection, Connection } from 'typeorm';
 
 class Database {
   constructor() {
-    this.init();
+    // this.init();
   }
 
   private init(): Promise<Connection> {

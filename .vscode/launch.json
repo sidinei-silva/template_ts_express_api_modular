@@ -34,7 +34,9 @@
       "args": [
         "${fileBasenameNoExtension}",
         "--config",
-        "jest.config.js"
+        "jest.config.js",
+        "--no-cache",
+        "--runInBand",
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
