@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import UserController from './app/users/users.controller';
+import UserModule from './app/users/user.module';
 
-const controllers = [new UserController()];
+const modules = [UserModule];
 
 const routes = Router();
 
-controllers.map(c => c.initRoutes(routes));
+modules.map(m => m.subscribeRoutes(routes));
 
 routes.get('/', (req, res) => {
   return res.json({ message: 'Hello Routes' });
