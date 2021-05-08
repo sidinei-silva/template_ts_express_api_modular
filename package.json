@@ -38,7 +38,7 @@
     "express": "^4.17.1",
     "pg": "^7.18.2",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.24",
+    "typeorm": "^0.2.25",
     "yup": "^0.28.1"
   },
   "jest": {
